@@ -16,30 +16,30 @@ public class ProductoMenuTest {
 	private String nombre = "Hamburguesa";
 	
 	@BeforeEach
-	public void setUp() {
+	void setUp() {
 		this.producto = new ProductoMenu(nombre, 10);
 	}
 	
 	 @AfterEach
-	    void tearDown( ) throws Exception
+	void tearDown( ) throws Exception
 	    {
 	    }
 	 
 	 @Test
-	 public void testGetNombre() {
-		 assertEquals("Hamburguesa", producto.getNombre());
+	 void testGetNombre() {
+		 assertEquals("Hamburguesa", producto.getNombre(), "el nombre es incorrecto");
 	 }
 	 
 	 @Test
-	 public void testGetPrecio() {
-		 assertEquals(10, producto.getPrecio());
+	 void testGetPrecio() {
+		 assertEquals(10, producto.getPrecio(), "el precio es incorrecto");
 	 }
 	 
 	 @Test
-	 public void testGenerargenerarTextoFactura() {
+	 void testGenerargenerarTextoFactura() {
 		 String factura = producto.generarTextoFactura();
-		 assertTrue(factura.contains(nombre));
-		 assertTrue(factura.contains("10"));
+		 assertTrue(factura.contains(nombre), "la factura no contiene el nombre");
+		 assertTrue(factura.contains("10"), "la factura no contiene el precio");
 	 }
 	
 }

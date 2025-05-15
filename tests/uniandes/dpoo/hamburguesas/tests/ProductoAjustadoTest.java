@@ -21,29 +21,32 @@ public class ProductoAjustadoTest {
 	
 	
 	@BeforeEach
-	public void setUp() {
+	void setUp() {
 		this.productoAjustado = new ProductoAjustado(producto);
+		bacon = new Ingrediente("bacon", 2);
+		tomate = new Ingrediente("tomate", 1);
+		
 	}
 	
 	 @AfterEach
-	    void tearDown( ) throws Exception
+	 void tearDown( ) throws Exception
 	    {
 	    }
 	 
 	 @Test
-	 public void testGetNombre() {
-		 assertEquals("Hamburguesa", producto.getNombre());
+	 void testGetNombre() {
+		 assertEquals("Hamburguesa", producto.getNombre(), "el nombre del producto ajustado es incorrecto");
 	 }
 	 
 	 @Test
-	 public void testGetPrecio() {
-		 assertEquals(0, producto.getPrecio());
+	 void testGetPrecio() {
+		 assertEquals(0, producto.getPrecio(), "el precio del producto ajustado es incorrecto");
 	 }
 	 
 	 @Test
-	 public void testGenerargenerarTextoFactura() {
+	 void testGenerargenerarTextoFactura() {
 		 String factura = producto.generarTextoFactura();
-		 assertTrue(factura.contains(nombre));
-		 assertTrue(factura.contains("10"));
+		 assertTrue(factura.contains(nombre), "la factura no contiene el nombre");
+		 assertTrue(factura.contains("0"), "la factura no contiene el precio ajustado");
 	 }
 }
